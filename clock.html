@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Часы</title>
+    <style>
+      .clock {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background-color: #47181848;
+      }
+      #hours, #minutes {
+        font-size: 36px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="clock"></div>
+    
+    <script>
+      // Создаем объект Date с текущим временем
+      var date = new Date();
+      
+      // Получаем часы и минуты из объекта Date
+      var hours = date.getHours();
+      var minutes = date.getMinutes();
+      
+      // Вычисляем секунды из часов и минут
+      var seconds = (hours * 60 + minutes) % 60;
+      
+      // Отображаем часы и минуты на странице
+      document.querySelector('.clock').innerHTML = 
+        '<div id="hours">' + hours + '</div>' +
+        '<div id="minutes">' + minutes + '</div>';
+      
+      // Обновляем секунды каждые 1 секунду
+      setInterval(function() {
+        seconds++;
+        document.getElementById('seconds').textContent = seconds;
+      }, 1000);
+    </script>
+  </body>
+</html>
